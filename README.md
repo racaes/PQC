@@ -1,7 +1,7 @@
 # PQC:
 ## Probabilistic Quantum Clustering.
 
-PQC_main_script.m contains the main script with the pipeline of the PQC algorithm.
+PQC_main_script.m contains the main script with the pipeline of the PQC algorithm. Before, add project folder to Matlab search path.
 
 *TODO: Add guidelines to clarify the usage*
 
