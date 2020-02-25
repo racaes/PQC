@@ -38,23 +38,20 @@ lambda = mean(sqrt(sum(data.^2,2)));
 data = data./lambda;
 
 %% Plot data
-
-if size(data,2)==3
-    figure;
-    scatter3(data(:,1), data(:,2), data(:,3), 20, class)
-    xlabel('X1')
-    ylabel('X2')
-    zlabel('X3')
-elseif size(data,2)==2
-    figure;
-    gscatter(data(:,1),data(:,2),class)
-    grid minor
-    title(['Data #', num2str(opt)])
-    xlabel('X1')
-    ylabel('X2')
-else
-    for c_col=1:size(class,2)
-        figure;
+for c_col=1:size(class,2)
+    figure
+    if size(data,2)==3        
+        scatter3(data(:,1), data(:,2), data(:,3), 20, class)
+        xlabel('X1')
+        ylabel('X2')
+        zlabel('X3')
+    elseif size(data,2)==2
+        gscatter(data(:,1),data(:,2),class)
+        grid minor
+        title(['Data #', num2str(opt)])
+        xlabel('X1')
+        ylabel('X2')
+    else
         [coeff, score, latent] = pca(data);
         scatter3(score(:,1),score(:,2),score(:,3), 20, class(:,c_col))
         title(['PCA Data #', num2str(opt), 'Class column: ', num2str(c_col)])
@@ -64,7 +61,6 @@ else
         zlabel('PCA3')
     end
 end
-
 %% Histograms 2D
 figure
 h = histogram2(data(:,1), data(:,2),'FaceColor','flat');
