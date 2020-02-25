@@ -30,9 +30,9 @@ end
 
 %% Preprocessing
 
-% % Data from JMLR in 'datasets4.mat' is already preprocessed.
-% Only zscoring if features are not related themselves as a distance. Not
-% in Euclidean embedding!!
+% % Data from 'datasets4.mat' is already preprocessed.
+% In general, only apply zscore if the features are not related themselves
+% as a distance. Do not zscore for data coming from Euclidean embedding!!
 [data1,mu,s] = zscore(data);
 lambda = mean(sqrt(sum(data.^2,2)));
 data = data./lambda;
